@@ -5,6 +5,8 @@ import br.com.expertTeam.jabbaTheHuttbackend.core.exceptions.NaoEncontradoExcept
 import br.com.expertTeam.jabbaTheHuttbackend.core.ports.CategoriaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class CategoriaRepositoryImpl implements CategoriaRepository {
 
@@ -20,21 +22,12 @@ public class CategoriaRepositoryImpl implements CategoriaRepository {
     }
 
     @Override
-    public Categoria buscarPorId(Long id) {
-        return categoriaRepository.findById(id)
-                .orElseThrow(() -> new NaoEncontradoException("Categoria não encontrada."));
+    public Optional<Categoria> buscarPorId(Long id) {
+        return categoriaRepository.findById(id);
     }
 
     @Override
-    public Categoria atualizar(Long id, Categoria categoria) {
-        Categoria categoriaEncontrada = buscarPorId(id);
-        categoriaEncontrada.setNome(categoria.getNome());
-        return categoriaRepository.save(categoriaEncontrada);
-    }
-
-    @Override
-    public void deletar(Long id) {
-        Categoria categoriaEncontrada = buscarPorId(id);
-        categoriaRepository.delete(categoriaEncontrada);
+    public void deletar(Categoria categoria) {
+        categoriaRepository.delete(categoria);
     }
 }

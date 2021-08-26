@@ -2,9 +2,10 @@ package br.com.expertTeam.jabbaTheHuttbackend.core.ports;
 
 import br.com.expertTeam.jabbaTheHuttbackend.core.entities.Categoria;
 
+import java.util.Optional;
+
 public interface CategoriaRepository {
     Categoria salvar(Categoria categoria);
-    Categoria buscarPorId(Long id);
-    Categoria atualizar(Long id, Categoria categoria);
-    void deletar(Long id);
+    Optional<Categoria> buscarPorId(Long id);
+    void deletar(Categoria categoria);
 }
