@@ -7,6 +7,8 @@ import br.com.expertTeam.jabbaTheHuttbackend.core.ports.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoriaServiceImpl  implements CategoriaService {
 
@@ -25,8 +27,14 @@ public class CategoriaServiceImpl  implements CategoriaService {
     }
 
     @Override
+    public List<Categoria> buscarTodos() {
+        return categoriaRepository.buscarTodos();
+    }
+
+    @Override
     public Categoria atualizar(Long id, Categoria categoria) {
         Categoria categoriaEncontrada = buscarPorId(id);
+        categoriaEncontrada.setNome(categoria.getNome());
         return categoriaRepository.salvar(categoriaEncontrada);
     }
 
