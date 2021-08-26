@@ -1,4 +1,4 @@
-package br.com.expertTeam.jabbaTheHuttbackend.adapters.outbound.persistence;
+package br.com.expertTeam.jabbaTheHuttbackend.adapters.outbound.persistence.springData;
 
 import br.com.expertTeam.jabbaTheHuttbackend.core.entities.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;

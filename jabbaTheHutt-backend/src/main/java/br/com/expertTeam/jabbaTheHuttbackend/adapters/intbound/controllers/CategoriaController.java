@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("categorias")
 public class CategoriaController {
@@ -20,6 +22,12 @@ public class CategoriaController {
     public ResponseEntity<CategoriaDto> buscarPorId(@PathVariable Long id) {
         Categoria categoriaResponse = categoriaService.buscarPorId(id);
         return new ResponseEntity<>(CategoriaDto.converter(categoriaResponse), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CategoriaDto>> buscarTodos() {
+        List<Categoria> categoriasResponse = categoriaService.buscarTodos();
+        return new ResponseEntity<>(CategoriaDto.converter(categoriasResponse), HttpStatus.OK);
     }
 
     @PostMapping
