@@ -15,10 +15,12 @@ public class ProdutoDto {
     private Long id;
     private String nome;
     private BigDecimal preco;
+    private String imagem;
+    private String descricao;
     private Categoria Categoria;
 
     public static ProdutoDto converter(Produto produto) {
-        return new ProdutoDto(produto.getId(), produto.getNome(), produto.getPreco(), produto.getCategoria());
+        return new ProdutoDto(produto.getId(), produto.getNome(), produto.getPreco(), produto.getImagem(), produto.getDescricao(), produto.getCategoria());
     }
 
     public static List<ProdutoDto> converter(List<Produto> produtos) {
